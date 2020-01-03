@@ -39,14 +39,13 @@
 		<!-- nav -->
 		<nav class="py-md-4 py-3 d-lg-flex">
 			<div id="logo">
-				<h1 class="mt-md-0 mt-2"> <a href="#"><span class="fa fa-car"></span> Carpooling System </a></h1>
+				<h1 class="mt-md-0 mt-2"> <a href="{{ url('/') }}"><span class="fa fa-car"></span> Carpooling System </a></h1>
 			</div>
 			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
             <input type="checkbox" id="drop" />
             @if (Route::has('login'))
                 @auth
                 <ul class="menu m1-auto mt-1">
-                    <li class=""><a href="{{ url('/index') }}"><span class="fa fa-home"></span> Home</a></li>
                     <li class=""><a href="{{ url('/dashboard') }}"><span class="fa fa-dashboard"></span> Dashboard</a></li>
                     <li class=""><a href="{{ url('/rides/find-ride') }}"><span class="fa fa-search"></span> Find a Ride</a></li>
                     <li class=""><a href="{{ url('/rides/add-new-ride') }}"><span class="fa fa-plus"></span> Add New Ride</a></li>
@@ -81,8 +80,8 @@
 								<h3 class="text-wh">Save Money Journeying with Other Commuters.</h3>
 								<h4 class="text-wh">Reduce your travel costs by joining other users in travelling along similar routes.</h4>
 								<div class="buttons mt-4">
-									<a href="{{ url('/find-ride') }} " class="btn mr-2">Find a Ride</a>
-									<a href="{{ url('/add-new-ride') }} " class="btn">Add New Ride</a>
+									<a href="{{ url('/rides/find-ride') }} " class="btn mr-2">Find a Ride</a>
+									<a href="{{ url('/rides/add-new-ride') }} " class="btn">Add New Ride</a>
 								</div>
 							</div>
 						</div>
@@ -97,8 +96,8 @@
 								<h3 class="text-wh">Play a Part in Reducing Communal Traffic.</h3>
 								<h4 class="text-wh">Join rides with other users and reduce the number of cars on the road.</h4>
 								<div class="buttons mt-4">
-									<a href="{{ url('/find-ride') }} " class="btn mr-2">Find a Ride</a>
-									<a href="{{ url('/add-new-ride') }} " class="btn">Add New Ride</a>
+									<a href="{{ url('/rides/find-ride') }} " class="btn mr-2">Find a Ride</a>
+									<a href="{{ url('/rides/add-new-ride') }} " class="btn">Add New Ride</a>
 								</div>
 							</div>
 						</div>
@@ -113,8 +112,8 @@
 								<h3 class="text-wh">Make Extra Income Just by Driving Along Your Everyday Route.</h3>
 								<h4 class="text-wh">Make some extra cash by filling the usually empty seats in your car.</h4>
 								<div class="buttons mt-4">
-									<a href="{{ url('/find-ride') }} " class="btn mr-2">Find a Ride</a>
-									<a href="{{ url('/add-new-ride') }} " class="btn">Add New Ride</a>
+									<a href="{{ url('/rides/find-ride') }} " class="btn mr-2">Find a Ride</a>
+									<a href="{{ url('/rides/add-new-ride') }} " class="btn">Add New Ride</a>
 								</div>
 							</div>
 						</div>
@@ -129,8 +128,8 @@
 								<h3 class="text-wh">Share Trips with People Travelling along Similar Routes.</h3>
 								<h4 class="text-wh">Share your trips to school, office or destinations with people going along similar routes.</h4>
 								<div class="buttons mt-4">
-									<a href="{{ url('/find-ride') }} " class="btn mr-2">Find a Ride</a>
-									<a href="{{ url('/add-new-ride') }} " class="btn">Add New Ride</a>
+									<a href="{{ url('/rides/find-ride') }} " class="btn mr-2">Find a Ride</a>
+									<a href="{{ url('/rides/add-new-ride') }} " class="btn">Add New Ride</a>
 								</div>
 							</div>
 						</div>
@@ -155,7 +154,7 @@
 			<div class="col-lg-6 about-left">
 				<h3 class="mt-lg-3"></h3><strong>Where Do You Want To Drive To?</strong></h3>
 				<p class="mt-4">Let's make this your least expensive journey ever. Spread the total costs of your trips across other passengers travelling in similar routes.</p>
-                <a class="btn btn-lg btn-royal text-center btn-royal" href="{{ url('/add-new-ride') }}">Add New Ride</a>
+                <a class="btn btn-lg btn-royal text-center btn-royal" href="{{ url('/rides/add-new-ride') }}">Add New Ride</a>
             </div>
 			<div class="col-lg-6 about-right text-lg-right mt-lg-0 mt-5">
 				<img src=" {{ asset('landing/images/driver.jpg') }} " alt="" class="img-fluid abt-image" />
@@ -272,7 +271,7 @@
 				<div class="destinations-info">
 					<div class="caption mb-lg-3">
 						<h4>China</h4>
-						<a href="{{ url('/add-new-ride') }} ">Book Now</a>
+						<a href="{{ url('/rides/add-new-ride') }} ">Book Now</a>
 					</div>
 				</div>
 			</div>
@@ -293,7 +292,7 @@
 				<div class="destinations-info">
 					<div class="caption mb-lg-3">
 						<h4>Malaysia</h4>
-						<a href="{{ url('/add-new-ride') }} ">Book Now</a>
+						<a href="{{ url('/rides/add-new-ride') }} ">Book Now</a>
 					</div>
 				</div>
 			</div>
@@ -314,7 +313,7 @@
 				<div class="destinations-info">
 					<div class="caption mb-lg-3">
 						<h4>Japan</h4>
-						<a href="{{ url('/add-new-ride') }} ">Book Now</a>
+						<a href="{{ url('/rides/add-new-ride') }} ">Book Now</a>
 					</div>
 				</div>
 			</div>
@@ -335,7 +334,7 @@
 				<div class="destinations-info">
 					<div class="caption mb-lg-3">
 						<h4>Singapore</h4>
-						<a href="{{ url('/add-new-ride') }} ">Book Now</a>
+						<a href="{{ url('/rides/add-new-ride') }} ">Book Now</a>
 					</div>
 				</div>
 			</div>
