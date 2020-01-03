@@ -7,6 +7,8 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewUserNotification;
 
 class RegisterController extends Controller
 {
@@ -28,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -61,8 +63,18 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+
     protected function create(array $data)
     {
+        $email = $data['email'];
+        $subject = "Successful Registration on Carpooling System";
+
+        // Mail::send('emails.welcome', $data, function ($message) use ($email, $subject) {
+        //     $message->to($email)->subject($subject);
+        // });
+
+        Mail::to($data['email'])->send(new NewUserNotification($data));
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

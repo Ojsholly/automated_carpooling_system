@@ -55,10 +55,9 @@ return [
     |
     */
 
-    'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
-    ],
+    'from' => ['address' => 'info@automated_carpooling_system.com', 'name' => 'Admin'],
+    'sender' =>  ['address' => 'info@automated_carpooling_system.com', 'name' => 'Admin'],
+    'reply_to' => ['address' => 'info@automated_carpooling_system.com', 'name' => 'Admin'],
 
     /*
     |--------------------------------------------------------------------------
