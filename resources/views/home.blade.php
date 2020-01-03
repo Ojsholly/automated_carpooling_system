@@ -9,7 +9,8 @@
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         <span class="caret"></span>
-                    </a></div>
+                    </a>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
