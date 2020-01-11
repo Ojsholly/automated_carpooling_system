@@ -70,7 +70,8 @@
                                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop">
                                     <div class="mdc-text-field mdc-text-field--outlined">
                                         <input class="mdc-text-field__input" name="dob" type="date"
-                                            max="{{ date('Y-m-d') }}" required id="text-field-hero-input">
+                                            max="{{ date('Y-m-d') }}" value="{{ Auth::user()->dob }}" required
+                                            id="text-field-hero-input">
                                         <div class="mdc-notched-outline">
                                             <div class="mdc-notched-outline__leading"></div>
                                             <div class="mdc-notched-outline__notch">
@@ -84,7 +85,7 @@
                                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop">
                                     <div class="mdc-text-field mdc-text-field--outlined">
                                         <input class="mdc-text-field__input" id="text-field-hero-input" required
-                                            name="phone" type="tel" value="">
+                                            name="phone" value="{{ Auth::user()->phone }}" type="tel" value="">
                                         <div class="mdc-notched-outline">
                                             <div class="mdc-notched-outline__leading"></div>
                                             <div class="mdc-notched-outline__notch">
@@ -97,10 +98,13 @@
                                 </div>
                                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop">
                                     <div class="mdc-text-field mdc-text-field--outlined">
-                                        <select name="country_code" required class="select">
+                                        <select name="country_code" value="{{ Auth::user()->country_code }}" required
+                                            class="select">
                                             <option selected disabled>Select Country Code</option>
                                             @foreach($country_codes as $country_code)
-                                            <option value="{{ $country_code->phonecode }}">{{ $country_code->nicename }}
+                                            <option value="+{{ $country_code->phonecode }}" @if( Auth::user()->email ==
+                                                '+'.$country_code->phonecode ) selected
+                                                @endif>{{ $country_code->nicename }}
                                                 (+{{ $country_code->phonecode }})</option>
                                             @endforeach()
                                         </select>
@@ -109,8 +113,9 @@
                                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop">
                                     <div class="mdc-form-field">
                                         <div class="mdc-radio mdc-radio--touch">
-                                            <input colorPrimary class="mdc-radio__native-control" type="radio"
-                                                value="Male" id="radio-1" name="gender">
+                                            <input @if( Auth::user()->gender == 'Male' ) checked @endif
+                                            class="mdc-radio__native-control" type="radio"
+                                            value="Male" id="radio-1" name="gender">
                                             <div class="mdc-radio__background">
                                                 <div class="mdc-radio__outer-circle"></div>
                                                 <div class="mdc-radio__inner-circle"></div>
@@ -121,8 +126,9 @@
                                     </div>
                                     <div class="mdc-form-field">
                                         <div class="mdc-radio">
-                                            <input colorPrimary class="mdc-radio__native-control" type="radio"
-                                                value="Female" id="radio-1" name="gender">
+                                            <input @if( Auth::user()->gender == 'Female' ) checked @endif
+                                            class="mdc-radio__native-control" type="radio"
+                                            value="Female" id="radio-1" name="gender">
                                             <div class="mdc-radio__background">
                                                 <div class="mdc-radio__outer-circle"></div>
                                                 <div class="mdc-radio__inner-circle"></div>
@@ -148,7 +154,7 @@
                             <div class="mdc-layout-grid__inner">
                                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
                                     <textarea name="intro" min="10" max="500" class="mdc-text-field__input"
-                                        id="text-field-hero-input" required></textarea>
+                                        id="text-field-hero-input" required>{{ Auth::user()->intro }}</textarea>
                                     <p class="font-weight-bold">Include why people should travel with you.<br> Please
                                         don't
                                         include any personal details here.</p>

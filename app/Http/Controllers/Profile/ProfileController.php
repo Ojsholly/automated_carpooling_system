@@ -67,8 +67,6 @@ class ProfileController extends Controller
         $user_details->phone = Auth::user()->phone;
         $user_details->email = Auth::user()->email;
 
-        // exit(var_dump($request->first_name . " " . $request->last_name));
-
         $validation = $request->validate([
             'first_name' => ['required', 'string', 'max:50'],
             'last_name' => ['required', 'string', 'max:50'],

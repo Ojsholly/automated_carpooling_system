@@ -28,8 +28,8 @@
                     <div class="mdc-expansion-panel" id="profile-submenu">
                         <nav class="mdc-list mdc-drawer-submenu">
                             <div class="mdc-list-item mdc-drawer-item">
-                                <a class="mdc-drawer-link" href="pages/samples/403.html">
-                                    403
+                                <a class="mdc-drawer-link" href="{{ url('profile/change-avatar') }}">
+                                    Change avatar
                                 </a>
                             </div>
                             <div class="mdc-list-item mdc-drawer-item">
