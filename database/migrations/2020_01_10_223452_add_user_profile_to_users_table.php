@@ -16,9 +16,9 @@ class AddUserProfileToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->date('dob')->after('name')->nullable();
             $table->enum('gender', ['Male', 'Female'])->after('dob')->nullable();
-            $table->string('country_code')->after('gender');
+            $table->string('country_code')->after('gender')->nullable();
             $table->bigInteger('phone')->after('country_code')->nullable();
-            $table->text('intro')->after('email_verified_at');
+            $table->text('intro')->after('email_verified_at')->nullable();
         });
     }
 
