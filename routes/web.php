@@ -19,7 +19,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
-Route::get('/dashboard', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/dashboard', 'HomeController@index')->name('home')->middleware('auth')->middleware('verified');
 
 Route::get('redirect/{driver}', 'Auth\LoginController@redirectToProvider')
     ->name('login.provider')
@@ -30,4 +30,9 @@ Route::get('{driver}/callback', 'Auth\LoginController@handleProviderCallback')
     ->where('driver', implode('|', config('auth.socialite.drivers')));
 
 Route::group(['prefix' => 'profile', 'namespace' => 'Profile'], function () {
+
+    Route::get('/view-profile', 'ProfileController@show')->middleware('auth');
+
+    Route::get('/edit-profile', 'ProfileController@index')->middleware('auth');
+    Route::post('/edit-profile', 'ProfileController@edit')->name('profile/edit-profile')->middleware('auth');
 });

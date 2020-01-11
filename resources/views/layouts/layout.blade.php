@@ -17,6 +17,11 @@
     <link rel="stylesheet" href="{{ asset('vendors/flag-icon-css/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('landing/css/font-awesome.min.css') }}"><!-- fontawesome css -->
     <link rel="stylesheet" href="{{ asset('vendors/jvectormap/jquery-jvectormap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/select2-4.0.12/css/select2.min.css') }}">
+    <!--Select2 Plugin -->
+    <!-- Sweetalert2 Plugin -->
+    <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/css/sweetalert2.min.css') }}">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
@@ -32,7 +37,10 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <!-- Jquery 3.4.1 -->
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <!-- Sweetalert2 plugin -->
+    <script src="{{ asset('plugins/sweetalert2/js/sweetalert2.min.js') }}"></script>
 
 </head>
 
@@ -114,6 +122,8 @@
     <!-- Default Template Layout. -->
     </div>
     </div>
+    <script src="{{ asset('js/app.js') }}"></script>
+
     <!-- plugins:js -->
     <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
@@ -127,6 +137,39 @@
     <script src="{{ asset('js/misc.js') }}"></script>
     <!-- endinject -->
     <script src="{{ asset('js/dashboard.js') }}"></script>
+    <!--Select2 Plugin -->
+    <script src="{{ asset('plugins/select2-4.0.12/js/select2.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.select').select2({
+                placeholder: 'Select an option',
+                width: '100%',
+                height: '1500%'
+            });
+             @if(Session::has('success'))
+                console.log('here');
+                Swal.fire({
+                icon:'success',
+                title:'Success!',
+                text:"{{Session::get('success')}}",
+                timer:5000
+                }).then((value) => {
+                //location.reload();
+                }).catch(swal.noop);
+            @endif
+            @if(Session::has('fail'))
+                Swal.fire({
+                icon:'error',
+                title:'Oops!',
+                text:"{{Session::get('fail')}}",
+                timer:5000
+                }).then((value) => {
+                //location.reload();
+                }).catch(swal.noop);
+            @endif
+
+        });
+    </script>
 </body>
 
 </html>

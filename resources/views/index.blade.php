@@ -32,7 +32,6 @@
 
 </head>
 <body>
-<script src=" {{ asset('js/preloader.js') }}"></script>
 <!-- header -->
 <header>
 	<div class="container">

@@ -12,7 +12,7 @@
         <div class="mdc-list-group">
             <nav class="mdc-list mdc-drawer-menu">
                 <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link active" href="{{ url('/dashboard') }}">
+                    <a class="mdc-drawer-link" href="{{ url('/dashboard') }}">
                         <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon"
                             aria-hidden="true">home</i>
                         Dashboard
@@ -27,6 +27,11 @@
                     </a>
                     <div class="mdc-expansion-panel" id="profile-submenu">
                         <nav class="mdc-list mdc-drawer-submenu">
+                            <div class="mdc-list-item mdc-drawer-item">
+                                <a class="mdc-drawer-link" href="pages/samples/403.html">
+                                    403
+                                </a>
+                            </div>
                             <div class="mdc-list-item mdc-drawer-item">
                                 <a class="mdc-drawer-link" href="{{ url('profile/view-profile') }}">
                                     View profile
@@ -50,13 +55,13 @@
                     <div class="mdc-expansion-panel" id="car-submenu">
                         <nav class="mdc-list mdc-drawer-submenu">
                             <div class="mdc-list-item mdc-drawer-item">
-                                <a class="mdc-drawer-link" href="pages/samples/blank-page.html">
-                                    Blank Page
+                                <a class="mdc-drawer-link" href="{{ url('cars/add-new-car') }}">
+                                    Add Car
                                 </a>
                             </div>
                             <div class="mdc-list-item mdc-drawer-item">
-                                <a class="mdc-drawer-link" href="pages/samples/403.html">
-                                    403
+                                <a class="mdc-drawer-link" href="{{ url('cars/view-cars') }}">
+                                    View Cars
                                 </a>
                             </div>
                         </nav>
@@ -72,13 +77,13 @@
                     <div class="mdc-expansion-panel" id="ride-submenu">
                         <nav class="mdc-list mdc-drawer-submenu">
                             <div class="mdc-list-item mdc-drawer-item">
-                                <a class="mdc-drawer-link" href="pages/samples/blank-page.html">
-                                    Blank Page
+                                <a class="mdc-drawer-link" href="{{ url('rides/new-ride') }}">
+                                    New Ride
                                 </a>
                             </div>
                             <div class="mdc-list-item mdc-drawer-item">
-                                <a class="mdc-drawer-link" href="pages/samples/403.html">
-                                    403
+                                <a class="mdc-drawer-link" href="{{ url('') }}">
+                                    My Rides
                                 </a>
                             </div>
                         </nav>

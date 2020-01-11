@@ -16,6 +16,8 @@
                             <span class="figure">
                                 @if(auth()->user()->avatar)
                                 <img src="{{ auth()->user()->avatar }}" alt="user-avatar" class="user">
+                                @else
+                                <img src="{{ asset('images/profile.jfif') }}" alt="user-avatar" class="user">
                                 @endif
                             </span>
                             <span class="user-name">{{ Auth::user()->name }}</span>
