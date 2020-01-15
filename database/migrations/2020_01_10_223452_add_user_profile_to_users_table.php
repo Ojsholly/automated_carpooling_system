@@ -14,6 +14,10 @@ class AddUserProfileToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->string('provider_name')->nullable()->after('id');
+            $table->string('provider_id')->nullable()->after('provider_name');
+            $table->string('password')->nullable()->change();
+            $table->string('avatar')->nullable(); //
             $table->date('dob')->after('name')->nullable();
             $table->enum('gender', ['Male', 'Female'])->after('dob')->nullable();
             $table->string('country_code')->after('gender')->nullable();
@@ -30,6 +34,10 @@ class AddUserProfileToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('provider_name');
+            $table->dropColumn('provider_id');
+            $table->dropColumn('password');
+            $table->dropColumn('avatar');
             $table->dropColumn('dob');
             $table->dropColumn('gender');
             $table->dropColumn('country_code');
