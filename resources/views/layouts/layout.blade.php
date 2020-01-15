@@ -22,6 +22,8 @@
     <!--Select2 Plugin -->
     <!-- Sweetalert2 Plugin -->
     <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/css/sweetalert2.min.css') }}">
+    <!-- File Upload Plugin -->
+    <link rel="stylesheet" href="{{ asset('plugins/file-upload/css/dropify.min.css') }}">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
@@ -77,6 +79,8 @@
     <script src="{{ asset('js/dashboard.js') }}"></script>
     <!--Select2 Plugin -->
     <script src="{{ asset('plugins/select2-4.0.12/js/select2.min.js') }}"></script>
+    <!-- File Upload -->
+    <script src="{{ asset('plugins/file-upload/js/dropify.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('.select').select2({
@@ -104,6 +108,21 @@
                 //location.reload();
                 }).catch(swal.noop);
             @endif
+            var avatar = $('.user-avatar').attr('src');
+                $('.avatar').dropify({
+                wrap: '<div class="dropify-wrapper"></div>',
+                height: '300px',
+                defaultFile: avatar,
+                maxFileSize: '2000',
+                filename: '<p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner"></span></p>',
+                messages: {
+                'default': 'Drag and drop a file here or click',
+                'replace': 'Drag and drop or click to replace',
+                'remove': 'Remove',
+                'error': 'Sorry, this file is too large'
+                },
+            });
+
         });
     </script>
 </body>

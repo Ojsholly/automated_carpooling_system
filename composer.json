@@ -15,6 +15,7 @@
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^1.0",
         "laravel/ui": "^1.1",
+        "nesbot/carbon": "^2.28",
         "snowfire/beautymail": "dev-master"
     },
     "require-dev": {

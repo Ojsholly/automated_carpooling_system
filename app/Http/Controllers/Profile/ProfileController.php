@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Carbon\Carbon;
+
 
 
 class ProfileController extends Controller
@@ -28,7 +32,9 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+        $avatar = Auth::user()->avatar;
+        $avatar_type = Auth::user()->avatar_type;
+        return view('profile.change-avatar', ['avatar' => $avatar, 'avatar_type' => $avatar_type]);
     }
 
     /**
@@ -39,7 +45,30 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validation = $request->validate([
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        // $path = $request->file('avatar')->store('avatars');
+
+        $cover = $request->file('avatar');
+        $extension = $cover->getClientOriginalExtension();
+
+        Storage::disk('public')->put('avatars/' . $cover->getFilename() . '.' . $extension,  File::get($cover));
+
+
+        $user = $request->user();
+        $user->avatar = $cover->getFilename() . '.' . $extension;
+        $user->avatar_type = 0;
+
+        if ($user->save()) {
+            $request->session()->flash('success', 'Profile Avatar Successfully Updated');
+        } else {
+            $request->session()->flash('fail', 'Profile Avatar not updated. Please try again.');
+        }
+
+        return redirect()->route('profile/change-avatar');
     }
 
     /**
@@ -50,8 +79,8 @@ class ProfileController extends Controller
      */
     public function show()
     {
-        //
-        return view('profile.view-profile');
+        $age = Carbon::parse(Auth::user()->dob)->age;
+        return view('profile.view-profile', ['age' => $age]);
     }
 
     /**

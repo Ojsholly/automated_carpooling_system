@@ -14,10 +14,13 @@
                     <button class="mdc-button mdc-menu-button">
                         <span class="d-flex align-items-center">
                             <span class="figure">
-                                @if(auth()->user()->avatar)
-                                <img src="{{ auth()->user()->avatar }}" alt="user-avatar" class="user">
+                                @if(auth()->user()->avatar && auth()->user()->avatar_type == 0)
+                                <img src="{{ asset('uploads/avatars/'.auth()->user()->avatar) }}" alt="user-avatar"
+                                    class="user user-avatar">
+                                @elseif(auth()->user()->avatar && auth()->user()->avatar_type == 1)
+                                <img src="{{ asset(auth()->user()->avatar) }}" alt="user-avatar" class="user user-avatar">
                                 @else
-                                <img src="{{ asset('images/profile.jfif') }}" alt="user-avatar" class="user">
+                                <img src="{{ asset('images/profile.jfif') }}" alt="user-avatar" class="user user-avatar">
                                 @endif
                             </span>
                             <span class="user-name">{{ Auth::user()->name }}</span>
