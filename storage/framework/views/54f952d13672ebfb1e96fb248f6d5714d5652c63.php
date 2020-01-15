@@ -37,10 +37,10 @@
                                 <h1 class="mdc-typography--headline3"><?php echo e(Auth::user()->email); ?></h1>
                             </div>
                             <div
-                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-2 text-muted tx-14">
+                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-1 text-muted tx-14">
                                 Phone
                             </div>
-                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
+                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
                                 <h1 class="mdc-typography--headline3">
                                     <?php echo e(Auth::user()->country_code." ".Auth::user()->phone); ?></h1>
                             </div>
@@ -67,5 +67,4 @@
     </div>
 </main>
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('layouts.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\laravel\automated_carpooling_system\resources\views/profile/view-profile.blade.php ENDPATH**/ ?>
