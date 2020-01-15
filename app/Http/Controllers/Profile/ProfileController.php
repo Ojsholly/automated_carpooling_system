@@ -101,6 +101,7 @@ class ProfileController extends Controller
             'last_name' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'dob' => ['required', 'date', 'before_or_equal:today'],
+            'gender' => ['required'],
             'phone' => ['required', 'integer'],
             'country_code' => ['required'],
             'intro' => ['required', 'string', 'min:10', 'max:500'],
@@ -110,6 +111,7 @@ class ProfileController extends Controller
         $user->name = $request->first_name . " " . $request->last_name;
         $user->email = $request->email;
         $user->dob = $request->dob;
+        $user->gender = $request->gender;
         $user->phone = $request->phone;
         $user->country_code = $request->country_code;
         $user->intro = $request->intro;

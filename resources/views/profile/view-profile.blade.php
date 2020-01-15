@@ -39,10 +39,10 @@
                                 <h1 class="mdc-typography--headline3">{{ Auth::user()->email }}</h1>
                             </div>
                             <div
-                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-2 text-muted tx-14">
+                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-1 text-muted tx-14">
                                 Phone
                             </div>
-                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
+                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
                                 <h1 class="mdc-typography--headline3">
                                     {{ Auth::user()->country_code." ".Auth::user()->phone }}</h1>
                             </div>
