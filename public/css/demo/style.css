@@ -5216,25 +5216,25 @@ a.mdc-list-item {
 }
 
 .mdc-radio .mdc-radio__native-control:enabled:checked + .mdc-radio__background .mdc-radio__outer-circle {
-  border-color: #ff420f;
+  border-color: #7a00ff;
   /* @alternate */
-  border-color: var(--mdc-theme-secondary, #ff420f);
+  border-color: var(--mdc-theme-primary, #7a00ff);
 }
 
 .mdc-radio .mdc-radio__native-control:enabled + .mdc-radio__background .mdc-radio__inner-circle {
-  border-color: #ff420f;
+  border-color: #7a00ff;
   /* @alternate */
-  border-color: var(--mdc-theme-secondary, #ff420f);
+  border-color: var(--mdc-theme-primary, #7a00ff);
 }
 
 .mdc-radio .mdc-radio__background::before {
-  background-color: #ff420f;
+  background-color: #7a00ff;
 }
 
 @supports not (-ms-ime-align: auto) {
   .mdc-radio .mdc-radio__background::before {
     /* @alternate */
-    background-color: var(--mdc-theme-secondary, #ff420f);
+    background-color: var(--mdc-theme-primary, #7a00ff);
   }
 }
 
@@ -5419,13 +5419,13 @@ a.mdc-list-item {
 }
 
 .mdc-radio::before, .mdc-radio::after {
-  background-color: #ff420f;
+  background-color: #7a00ff;
 }
 
 @supports not (-ms-ime-align: auto) {
   .mdc-radio::before, .mdc-radio::after {
     /* @alternate */
-    background-color: var(--mdc-theme-secondary, #ff420f);
+    background-color: var(--mdc-theme-primary, #7a00ff);
   }
 }
 

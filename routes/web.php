@@ -17,9 +17,9 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth')->middleware('verified');
 
-Route::get('/dashboard', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/dashboard', 'HomeController@index')->name('home')->middleware('auth')->middleware('verified');
 
 Route::get('redirect/{driver}', 'Auth\LoginController@redirectToProvider')
     ->name('login.provider')
@@ -28,3 +28,14 @@ Route::get('redirect/{driver}', 'Auth\LoginController@redirectToProvider')
 Route::get('{driver}/callback', 'Auth\LoginController@handleProviderCallback')
     ->name('login.callback')
     ->where('driver', implode('|', config('auth.socialite.drivers')));
+
+Route::group(['prefix' => 'profile', 'namespace' => 'Profile'], function () {
+
+    Route::get('/view-profile', 'ProfileController@show')->middleware('auth');
+
+    Route::get('/edit-profile', 'ProfileController@index')->middleware('auth')->middleware('verified');
+    Route::post('/edit-profile', 'ProfileController@edit')->name('profile/edit-profile')->middleware('auth');
+
+    Route::get('/change-avatar', 'ProfileController@create')->middleware('auth');
+    Route::post('/change-avatar', 'ProfileController@store')->name('profile/change-avatar')->middleware('auth');
+});

@@ -32,7 +32,6 @@
 
 </head>
 <body>
-
 <!-- header -->
 <header>
 	<div class="container">
