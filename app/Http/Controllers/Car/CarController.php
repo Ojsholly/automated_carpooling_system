@@ -18,9 +18,10 @@ class CarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $car_details = Car::find($id);
+        return view('cars.view-car', ["car_details" => $car_details]);
     }
 
     /**
@@ -139,7 +140,11 @@ class CarController extends Controller
      */
     public function edit($id)
     {
-        //
+        $car_makes = DB::table('cars_list')->select('make')->distinct()->orderBy('make')->get()->toArray();
+        $countries = DB::table('country_codes')->select('nicename')->get();
+        $car_details = Car::find($id);
+
+        return view('cars.edit-car', ['car_makes' => $car_makes, 'countries' => $countries, 'car_details' => $car_details]);
     }
 
     /**

@@ -24,8 +24,8 @@
     <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/css/sweetalert2.min.css') }}">
     <!-- File Upload Plugin -->
     <link rel="stylesheet" href="{{ asset('plugins/file-upload/css/dropify.min.css') }}">
-    <!-- Form Slider Plugin -->
-    {{-- <link rel="stylesheet" href="{{ asset('plugins/slider-forms/css/slideform.css') }}"> --}}
+    <!-- DataTables Plugin -->
+    <link rel="stylesheet" href="{{ asset('plugins/dataTables/css/dataTables.css') }}">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
@@ -83,8 +83,8 @@
     <script src="{{ asset('plugins/select2-4.0.12/js/select2.min.js') }}"></script>
     <!-- File Upload -->
     <script src="{{ asset('plugins/file-upload/js/dropify.min.js') }}"></script>
-    <!-- Form Slider Plugin -->
-    <script src="{{ asset('plugins/slider-forms/js/jquery.slideform.js') }}"></script>
+    <!-- DataTables Plugin -->
+    <script src="{{ asset('plugins/dataTables/js/dataTables.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('.select').select2({
@@ -169,6 +169,14 @@
                     }
                     $('.model_years').html(list);
                 });
+            });
+            $('.table').DataTable( {
+            columnDefs: [
+            {
+                targets: [ 0, 1, 2 ],
+                className: 'mdl-data-table__cell--non-numeric'
+            }
+                ]
             });
         });
     </script>

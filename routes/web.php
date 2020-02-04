@@ -51,7 +51,13 @@ Route::group(['prefix' => 'cars', 'namespace' => 'Car'], function () {
 
     Route::get('/view-cars', 'CarController@show')->middleware('auth');
 
-    Route::post('/edit-car', 'CarController@edit')->name('cars/edit-car')->middleware('auth');
+    Route::get('/view-car/{id}', 'CarController@index')->middleware('auth');
+
+    Route::get('/edit-car/{car_id}', 'CarController@edit')->middleware('auth')->name('cars/edit-car');
+
+    // Route::get('/edit-car/{id}', 'CarController@edit')->middleware('auth');
+
+    // Route::post('/edit-car/{id}', 'CarController@update')->name('cars/edit-car/{id}')->middleware('auth');
 
     Route::post('/delete-car', 'CarController@destroy')->name('cars/delete-car')->middleware('auth');
 });

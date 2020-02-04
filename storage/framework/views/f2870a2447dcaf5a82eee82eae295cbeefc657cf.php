@@ -24,8 +24,8 @@
     <link rel="stylesheet" href="<?php echo e(asset('plugins/sweetalert2/css/sweetalert2.min.css')); ?>">
     <!-- File Upload Plugin -->
     <link rel="stylesheet" href="<?php echo e(asset('plugins/file-upload/css/dropify.min.css')); ?>">
-    <!-- Form Slider Plugin -->
-    
+    <!-- DataTables Plugin -->
+    <link rel="stylesheet" href="<?php echo e(asset('plugins/dataTables/css/dataTables.css')); ?>">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
@@ -83,8 +83,8 @@
     <script src="<?php echo e(asset('plugins/select2-4.0.12/js/select2.min.js')); ?>"></script>
     <!-- File Upload -->
     <script src="<?php echo e(asset('plugins/file-upload/js/dropify.min.js')); ?>"></script>
-    <!-- Form Slider Plugin -->
-    <script src="<?php echo e(asset('plugins/slider-forms/js/jquery.slideform.js')); ?>"></script>
+    <!-- DataTables Plugin -->
+    <script src="<?php echo e(asset('plugins/dataTables/js/dataTables.js')); ?>"></script>
     <script>
         $(document).ready(function() {
             $('.select').select2({
@@ -170,9 +170,16 @@
                     $('.model_years').html(list);
                 });
             });
+            $('.table').DataTable( {
+            columnDefs: [
+            {
+                targets: [ 0, 1, 2 ],
+                className: 'mdl-data-table__cell--non-numeric'
+            }
+                ]
+            });
         });
     </script>
 </body>
 
-</html>
-<?php /**PATH C:\xampp\htdocs\laravel\automated_carpooling_system\resources\views/layouts/layout.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\xampp\htdocs\laravel\automated_carpooling_system\resources\views/layouts/layout.blade.php ENDPATH**/ ?>
