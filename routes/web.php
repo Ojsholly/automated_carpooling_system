@@ -61,3 +61,9 @@ Route::group(['prefix' => 'cars', 'namespace' => 'Car'], function () {
 
     Route::post('/delete-car', 'CarController@destroy')->name('cars/delete-car')->middleware('auth');
 });
+
+Route::group(['prefix' => 'rides', 'namespace' => 'Ride'], function () {
+
+    Route::get('/add-new-ride', 'RideController@create')->middleware('auth');
+
+});

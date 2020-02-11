@@ -1,7 +1,6 @@
 @extends('layouts.layout')
 
 @section('content')
-
 <main class="content-wrapper">
     @if ($errors->any())
     <div class="alert alert-danger">

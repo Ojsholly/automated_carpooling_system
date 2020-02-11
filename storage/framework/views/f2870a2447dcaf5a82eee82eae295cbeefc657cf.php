@@ -60,12 +60,11 @@
     </div>
     </div>
 
+    <script src="<?php echo e(asset('js/app.js')); ?>"></script>
     <!-- Jquery 3.4.1 -->
     <script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
     <!-- Sweetalert2 plugin -->
     <script src="<?php echo e(asset('plugins/sweetalert2/js/sweetalert2.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('js/app.js')); ?>"></script>
-
     <!-- plugins:js -->
     <script src="<?php echo e(asset('vendors/js/vendor.bundle.base.js')); ?>"></script>
     <!-- endinject -->
@@ -178,7 +177,22 @@
             }
                 ]
             });
+
+            // function autocomplete(id) {
+            //     console.log(id);
+            //     var input = $('#'+id).val();
+            //     var autocomplete = new google.maps.places.Autocomplete(input);
+            // }
+            $('#location').change(function(){
+                var input = $(this).val();
+                var location = new google.maps.places.Autocomplete(input);
+                google.maps.event.addListener(input, 'place_changed', function(){
+                var place = autocomplete.getPlace();
+                })
+            });
         });
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo e(env('GOOGLE_MAPS_API_KEY')); ?>&libraries=places">
     </script>
 </body>
 
