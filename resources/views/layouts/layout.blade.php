@@ -3,100 +3,126 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/flatly/bootstrap.min.css">
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <!-- plugins:css -->
-    <link rel="stylesheet" href="{{ asset('vendors/mdi/css/materialdesignicons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendors/flag-icon-css/css/flag-icon.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('landing/css/font-awesome.min.css') }}"><!-- fontawesome css -->
-    <link rel="stylesheet" href="{{ asset('vendors/jvectormap/jquery-jvectormap.css') }}">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{{ asset('landing/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('new-ui//plugins/pg-calendar/css/pignose.calendar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('new-ui/plugins/chartist/css/chartist.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('new-ui/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css') }}">
+    <link rel="shortcut icon" href="{{ asset('images/icon.png') }}" />
+    <link rel="stylesheet" href="{{ asset('new-ui/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/select2-4.0.12/css/select2.min.css') }}">
-    <!--Select2 Plugin -->
-    <!-- Sweetalert2 Plugin -->
     <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/css/sweetalert2.min.css') }}">
-    <!-- File Upload Plugin -->
     <link rel="stylesheet" href="{{ asset('plugins/file-upload/css/dropify.min.css') }}">
-    <!-- DataTables Plugin -->
-    <link rel="stylesheet" href="{{ asset('plugins/dataTables/css/dataTables.css') }}">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="{{ asset('css/demo/style.css') }}">
-    <!-- End layout styles -->
-    {{-- Social Media Buttons Styles --}}
+    <link href="{{ asset('new-ui/plugins/tables/css/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('landing/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datetimepicker-master/jquery.datetimepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-social.css') }} ">
     {{-- End Social Media Button Styles --}}
 
-    <link rel="shortcut icon" href="{{ asset('images/icon.png') }}" />
+    <style>
+        .select2-container--default .select2-selection--single {
+            height: 45px;
+        }
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    </style>
 
 </head>
 
 <body>
-    <script src=" {{ asset('js/preloader.js') }}"></script>
-    <div class="body-wrapper">
-        <!-- Sidebar -->
-        @include('layouts.header.sidebar')
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+    <!--**********************************
+            Main wrapper start
+        ***********************************-->
+    <div id="main-wrapper">
         <!-- Header -->
         @include('layouts.header.header')
+        <!-- Sidebar -->
+        @include('layouts.header.sidebar')
         <!-- Page Content -->
         @yield('content')
         <!-- Footer -->
         @include('layouts.header.footer')
     </div>
-    <!-- Default Template Layout. -->
-    </div>
-    </div>
 
-    <script src="{{ asset('js/app.js') }}"></script>
-    <!-- Jquery 3.4.1 -->
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <!-- Sweetalert2 plugin -->
-    <script src="{{ asset('plugins/sweetalert2/js/sweetalert2.min.js') }}"></script>
-    <!-- plugins:js -->
-    <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page-->
-    <script src="{{ asset('vendors/chartjs/Chart.min.js') }}"></script>
-    <script src="{{ asset('vendors/jvectormap/jquery-jvectormap.min.js') }}"></script>
-    <script src="{{ asset('vendors/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-    <!-- End plugin js for this page-->
-    <!-- inject:js -->
-    <script src="{{ asset('js/material.js') }}"></script>
-    <script src="{{ asset('js/misc.js') }}"></script>
-    <!-- endinject -->
-    <script src="{{ asset('js/dashboard.js') }}"></script>
-    <!--Select2 Plugin -->
+    <!--**********************************
+            Main wrapper end
+        ***********************************-->
+
+    <!--**********************************
+                Scripts
+            ***********************************-->
+    {{-- <script src="{{ asset('js/jquery.min.js') }}"></script> --}}
+    <script src="{{ asset('new-ui/plugins/common/common.min.js') }}"></script>
+    <script src="{{ asset('new-ui/js/custom.min.js') }}"></script>
+    <script src="{{ asset('new-ui/js/settings.js') }}"></script>
+    <script src="{{ asset('new-ui/js/gleek.js') }}"></script>
+    <script src="{{ asset('new-ui/js/styleSwitcher.js') }}"></script>
+
+    <!-- Chartjs -->
+    <script src="{{ asset('new-ui/plugins/chart.js/Chart.bundle.min.js') }}"></script>
+    <!-- Circle progress -->
+    <script src="{{ asset('new-ui/plugins/circle-progress/circle-progress.min.js') }}"></script>
+    <!-- Datamap -->
+    <script src="{{ asset('new-ui/plugins/d3v3/index.js') }}"></script>
+    <script src="{{ asset('new-ui/plugins/topojson/topojson.min.js') }}"></script>
+    <script src="{{ asset('new-ui/plugins/datamaps/datamaps.world.min.js') }}"></script>
+    <!-- Morrisjs -->
+    <script src="{{ asset('new-ui/plugins/raphael/raphael.min.js') }}"></script>
+    <script src="{{ asset('new-ui/plugins/morris/morris.min.js') }}"></script>
+    <!-- Pignose Calender -->
+    <script src="{{ asset('new-ui/plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('new-ui/plugins/pg-calendar/js/pignose.calendar.min.js') }}"></script>
+    <!-- ChartistJS -->
+    <script src="{{ asset('new-ui/plugins/chartist/js/chartist.min.js') }}"></script>
+    <script src="{{ asset('new-ui/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js') }}"></script>
+
     <script src="{{ asset('plugins/select2-4.0.12/js/select2.min.js') }}"></script>
+    <script src="{{ asset('plugins/sweetalert2/js/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('new-ui/js/dashboard/dashboard-1.js') }}"></script>
     <!-- File Upload -->
     <script src="{{ asset('plugins/file-upload/js/dropify.min.js') }}"></script>
-    <!-- DataTables Plugin -->
-    <script src="{{ asset('plugins/dataTables/js/dataTables.js') }}"></script>
+    {{-- <script src="{{ asset('landing/js/bootstrap.min.js') }}"></script> --}}
+    <script src="{{ asset('new-ui/plugins/tables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('new-ui/plugins/tables/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('new-ui/plugins/tables/js/datatable-init/datatable-basic.min.js') }}"></script>
+    <script src="{{ asset('plugins/google-place-picker-bootstrap/PlacePicker.js') }}"></script>
+    <script src="{{ asset('plugins/datetimepicker-master/jquery.datetimepicker.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('.select').select2({
                 placeholder: 'Select an option',
-                width: '100%',
-                height: '1500%'
+                allowClear: true,
+                width: '100%'
             });
-             @if(Session::has('success'))
+            @if(Session::has('success'))
                 Swal.fire({
                 icon:'success',
                 title:'Success!',
                 text:"{{Session::get('success')}}",
-                timer:10000
+                timer:30000
                 }).then((value) => {
                 }).catch(swal.noop);
             @endif
@@ -105,13 +131,13 @@
                 icon:'error',
                 title:'Oops!',
                 text:"{{Session::get('fail')}}",
-                timer:10000
+                timer:30000
                 }).then((value) => {
                 }).catch(swal.noop);
             @endif
-            @if (Request::is('change-avatar'))
+            @if (Request::is('profile/change-avatar'))
             var avatar = $('.user-avatar').attr('src');
-                $('.avatar').dropify({
+                $('#avatar').dropify({
                 wrap: '<div class="dropify-wrapper"></div>',
                 height: '300px',
                 defaultFile: avatar,
@@ -137,62 +163,64 @@
                 'error': 'Sorry, this file is too large'
                 },
             });
-            $('.make').click(function() {
-                let car_make = $(this).attr('data-value');
-                $('#car_make').val(car_make);
-                list = '<li class="mdc-list-item" data-value="">-Please select a model-</li>';
+            $('#make').change(function() {
+                let car_make = $(this).val();
+                option = '<option>-Please select a model-</option>';
                 $.get("/get-car-models", {"car_make" : car_make}, function(car_models){
                     if(car_models.length == 0){
 
                     } else {
                         jQuery.each(car_models, function(index, item) {
-                        list += '<li class="mdc-list-item model" data-value="'+item.model+'">'+item.model+'</li>';
+                        option += '<option class="model" value="'+item.model+'">'+item.model+'</option>';
                         })
                     }
-                    $('.car_model_list').html(list);
-                    $('.model_year').html('<li class="mdc-list-item" data-value=""></li>');
+                    $('#model').html(option);
+                    $('#model_year').html('<option></option>');
                 });
             });
-            $('body').on('click', '.model', function() {
-                let car_make = $('#car_make').val();
-                let car_model = $(this).attr('data-value');
-                $('#car_model').val(car_model);
-                list = '<li class="mdc-list-item" data-value="">-Please select a model year-</li>';
+            $('#model').change(function() {
+                let car_make = $('#make').val();
+                let car_model = $(this).val();
+                option = '<option>-Please select a model year-</option>';
                 $.get("/get-model-year", {"car_make" : car_make, "car_model" : car_model}, function(model_year){
                     if (model_year.length == 0) {
 
                     } else {
                         jQuery.each(model_year, function(index, item){
-                            list += '<li class="mdc-list-item model_year" data-value="'+item.year+'">'+item.year+'</li>';
+                            option += '<option value="'+item.year+'">'+item.year+'</option>';
                         });
                     }
-                    $('.model_years').html(list);
+                    $('#model_year').html(option);
                 });
             });
-            $('.table').DataTable( {
-            columnDefs: [
-            {
-                targets: [ 0, 1, 2 ],
-                className: 'mdl-data-table__cell--non-numeric'
-            }
-                ]
+            $('#pickup_location').PlacePicker({
+                key:"{{ env('GOOGLE_MAPS_API_KEY') }}",
+                id: $(this).attr('id'),
+                title: "Enter or select an address from the map.",
+                btnClass: "btn btn-primary btn-lg",
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 10,
+                success:function(data,address){
+                    $('#pickup_location').val(data.formatted_address);
+                }
             });
-
-            // function autocomplete(id) {
-            //     console.log(id);
-            //     var input = $('#'+id).val();
-            //     var autocomplete = new google.maps.places.Autocomplete(input);
-            // }
-            $('#location').change(function(){
-                var input = $(this).val();
-                var location = new google.maps.places.Autocomplete(input);
-                google.maps.event.addListener(input, 'place_changed', function(){
-                var place = autocomplete.getPlace();
-                })
+            $('#destination').PlacePicker({
+                key:"{{ env('GOOGLE_MAPS_API_KEY') }}",
+                id: $(this).attr('id'),
+                title: "Enter or select an address from the map.",
+                btnClass: "btn btn-primary btn-lg",
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 10,
+                success:function(data,address){
+                    $('#destination').val(data.formatted_address);
+                }
+            });
+            $('.datetime').datetimepicker({
+                value: "{{ date('Y-m-d H:i:s') }}",
+                minDate: "{{ date('Y-m-d') }}",
+                minTime: "{{ date(H:i:) }}"
             });
         });
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places">
     </script>
 </body>
 

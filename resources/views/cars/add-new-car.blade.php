@@ -1,244 +1,162 @@
 @extends('layouts.layout')
 
 @section('content')
-<main class="content-wrapper">
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+<div class="content-body">
 
     <form method="post" action="{{ route('cars/add-new-car') }}" enctype="multipart/form-data">
         @csrf
-        <div class="mdc-layout-grid">
-            <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell--span-12">
-                    <div class="mdc-card">
-                        <h6 class="card-title">Car Make and Model</h6>
-                        <div class="template-demo">
-                            <div class="mdc-layout-grid__inner">
-                                <div
-                                    class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop text-center">
-                                    <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
-                                        <input required type="hidden" name="car_make" id="car_make">
-                                        <i class="mdc-select__dropdown-icon"></i>
-                                        <div class="mdc-select__selected-text"></div>
-                                        <div class="mdc-select__menu mdc-menu-surface demo-width-class">
-                                            <ul class="mdc-list">
-                                                <li class="mdc-list-item mdc-list-item--selected" data-value=""
-                                                    aria-selected="true">
-                                                </li>
-                                                @foreach ($car_makes as $make)
-                                                <li class="mdc-list-item make" data-value="{{ $make->make }}">
-                                                    {{ $make->make }}
-                                                </li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                        <span class="mdc-floating-label">Make</span>
-                                        <div class="mdc-line-ripple"></div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop text-center">
-                                    <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
-                                        <input required type="hidden" name="car_model" id="car_model">
-                                        <i class="mdc-select__dropdown-icon"></i>
-                                        <div class="mdc-select__selected-text"></div>
-                                        <div class="mdc-select__menu mdc-menu-surface demo-width-class">
-                                            <ul class="mdc-list car_model_list">
-                                            </ul>
-                                        </div>
-                                        <span class="mdc-floating-label">Model</span>
-                                        <div class="mdc-line-ripple"></div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop text-center">
-                                    <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
-                                        <input required type="hidden" name="model_year" id="model_year">
-                                        <i class="mdc-select__dropdown-icon"></i>
-                                        <div class="mdc-select__selected-text"></div>
-                                        <div class="mdc-select__menu mdc-menu-surface demo-width-class">
-                                            <ul class="mdc-list model_years">
-                                            </ul>
-                                        </div>
-                                        <span class="mdc-floating-label">Year</span>
-                                        <div class="mdc-line-ripple"></div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop text-center">
-                                    <div class="mdc-text-field mdc-text-field--outlined">
-                                        <input class="mdc-text-field__input" id="text-field-hero-input" required
-                                            name="color" type="color">
-                                        <div class="mdc-notched-outline">
-                                            <div class="mdc-notched-outline__leading"></div>
-                                            <div class="mdc-notched-outline__notch">
-                                                <label for="text-field-hero-input"
-                                                    class="mdc-floating-label">Color</label>
-                                            </div>
-                                            <div class="mdc-notched-outline__trailing"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="container-fluid">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
-        </div>
-        <div class="mdc-layout-grid">
-            <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell--span-12">
-                    <div class="mdc-card">
-                        <h6 class="card-title">Registration Information</h6>
-                        <div class="template-demo">
-                            <div class="mdc-layout-grid__inner">
-                                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
-                                    <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
-                                        <input type="hidden" name="registration_country" required>
-                                        <i class="mdc-select__dropdown-icon"></i>
-                                        <div class="mdc-select__selected-text"></div>
-                                        <div class="mdc-select__menu mdc-menu-surface demo-width-class">
-                                            <ul class="mdc-list">
-                                                <li class="mdc-list-item mdc-list-item--selected" data-value=""
-                                                    aria-selected="true">
-                                                </li>
-                                                @foreach ($countries as $country)
-                                                <li class="mdc-list-item" data-value="{{ $country->nicename }}">
-                                                    {{ $country->nicename }}
-                                                </li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                        <span class="mdc-floating-label">Country of Registration</span>
-                                        <div class="mdc-line-ripple"></div>
+            @endif
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Car Make and Model</h4>
+                            <div class="basic-form">
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label>Make</label>
+                                        <select name="car_make" value="{{ old('car_make') }}" id="make" required
+                                            class="select form-control">
+                                            <option></option>
+                                            @foreach ($car_makes as $make)
+                                            <option value="{{ $make->make }}">{{ $make->make }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                </div>
-                                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
-                                    <div class="mdc-text-field mdc-text-field--outlined">
-                                        <input class="mdc-text-field__input" id="text-field-hero-input" required
-                                            name="plate_number" type="text">
-                                        <div class="mdc-notched-outline">
-                                            <div class="mdc-notched-outline__leading"></div>
-                                            <div class="mdc-notched-outline__notch">
-                                                <label for="text-field-hero-input" class="mdc-floating-label">Plate
-                                                    Number</label>
-                                            </div>
-                                            <div class="mdc-notched-outline__trailing"></div>
-                                        </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Model</label>
+                                        <select name="car_model" value="{{ old('car_model') }}" id="model" required
+                                            class="select form-control">
+
+                                        </select>
                                     </div>
-                                </div>
-                                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
-                                    <div class="mdc-text-field mdc-text-field--outlined">
-                                        <input class="mdc-text-field__input" name="registration_date" type="date"
-                                            max="{{ date('Y-m-d') }}" required id="text-field-hero-input">
-                                        <div class="mdc-notched-outline">
-                                            <div class="mdc-notched-outline__leading"></div>
-                                            <div class="mdc-notched-outline__notch">
-                                                <label for="text-field-hero-input" class="mdc-floating-label">Date of
-                                                    Registration</label>
-                                            </div>
-                                            <div class="mdc-notched-outline__trailing"></div>
-                                        </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Model</label>
+                                        <select name="model_year" value="{{ old('model
+                                        -year') }}" id="model_year" required class="select form-control">
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Color</label>
+                                        <input name="color" value="{{ old('color') }}" type="color" required
+                                            class="form-control">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="mdc-layout-grid">
-            <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell--span-4">
-                    <div class="mdc-card">
-                        <h6 class="card-title">Vehicle Inspection Report</h6>
-                        <div class="template-demo">
-                            <div class="mdc-layout-grid__inner">
-                                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-                                    <input class="mdc-text-field__input file_input" id="text-field-hero-input" required
-                                        name="inspection_report" type="file">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Registration Information</h4>
+                            <div class="basic-form">
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label>Country of Registration</label>
+                                        <select class="select" value="{{ old('registration_country') }}"
+                                            name="registration_country" required>
+                                            <option></option>
+                                            @foreach ($countries as $country)
+                                            <option value="{{ $country->nicename }}">{{ $country->nicename }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Plate Number</label>
+                                        <input type="text" class="form-control" name="plate_number"
+                                            value="{{ old('plate_number') }}" required placeholder="AB 123 XYZ">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Date of Registration</label>
+                                        <input type="date" required max="{{date('Y-m-d')}}"
+                                            value="{{ old('registration_date') }}" name="registration_date"
+                                            class="form-control">
+                                    </div>
                                 </div>
                             </div>
-                            <p class="font-weight-bold text-small text-center">Please Make Sure the Plate Number is
-                                very visible.
-                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="mdc-layout-grid__cell--span-4">
-                    <div class="mdc-card">
-                        <h6 class="card-title">Vehicle Insurance</h6>
-                        <div class="template-demo">
-                            <div class="mdc-layout-grid__inner">
-                                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-                                    <input class="mdc-text-field__input file_input" id="text-field-hero-input" required
-                                        name="insurance" type="file" multiple>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Insurance and Quality Assurance</h4>
+                            <div class="basic-form">
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label>Vehicle Inspection Report</label>
+                                        class="form-control">
+                                        <input name="inspection_report" value="{{ old('inspection_report') }}"
+                                            class="form-control file_input" required type="file">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Vehicle Insurance </label>
+                                        <input name="insurance" value="{{ old('insurance') }}"
+                                            class="form-control file_input" required type="file">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Road Worthiness Certificate</label>
+                                        <input name="road_worthiness" value="{{ old('road_worthiness') }}"
+                                            class="form-control file_input" required type="file">
+                                    </div>
                                 </div>
                             </div>
-                            <p class="font-weight-bold text-small text-center">Please Make Sure the Plate Number is
-                                very visible.
-                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="mdc-layout-grid__cell--span-4">
-                    <div class="mdc-card">
-                        <h6 class="card-title">Road Worthiness Certificate</h6>
-                        <div class="template-demo">
-                            <div class="mdc-layout-grid__inner">
-                                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-                                    <input class="mdc-text-field__input file_input" id="text-field-hero-input" required
-                                        name="road_worthiness" type="file">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Upload Images of the Car</h4>
+                            <div class="basic-form">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <input name="images[]" value="{{ old('images[]') }}" multiple
+                                            class="form-control file_input" required type="file">
+                                    </div>
                                 </div>
                             </div>
-                            <p class="font-weight-bold text-small text-center">Please Make Sure the Plate Number is
-                                very visible.
-                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="mdc-layout-grid">
-            <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell--span-12">
-                    <div class="mdc-card">
-                        <h6 class="card-title">Upload Images of the Car</h6>
-                        <div class="template-demo">
-                            <div class="mdc-layout-grid__inner">
-                                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-                                    <input class="mdc-text-field__input file_input" id="text-field-hero-input" required
-                                        name="images[]" type="file" multiple>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <p class="font-weight-bold text-center">Make sure all uploaded images are of
+                                            clear
+                                            resolution and not more than 2MB each.</p>
+                                    </div>
                                 </div>
                             </div>
-                            <p class="font-weight-bold text-small text-center">Please Make Sure the Plate Number is
-                                very visible.
-                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="mdc-layout-grid">
-            <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell--span-12">
-                    <div class="mdc-card">
-                        <div class="template-demo text-center">
-                            <button type="submit" class="mdc-button mdc-button--raised mdc-button--dense">
-                                Submit
-                            </button>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="general-button text-center">
+                                <button type="reset" class="btn mb-1 btn-light">Reset</button>
+                                <button type="submit" class="btn mb-1 btn-primary">Add Car</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </form>
-</main>
-@endsection
+    </mai>
+    @endsection

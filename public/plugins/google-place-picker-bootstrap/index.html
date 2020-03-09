@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="PlacePicker.png">
+
+    <title>Google Place Picker For Bootstrap Example</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/flatly/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="PlacePicker.js"></script>
+  </head>
+
+  <body class="text-center">
+    <form class="form-signin">
+      <img class="mb-4" src="PlacePicker.png" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Google Place Picker For Bootstrap Example</h1>
+      <div class="jquery-script-ads" style="margin:30px auto"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+      <label for="inputEmail" class="sr-only">Address</label>
+      <input type="email" id="pickup_country" class="form-control" placeholder="Address"  autofocus>
+    </form>
+<script type="text/javascript">
+    $(document).ready(function(){
+    	$("#pickup_country").PlacePicker({
+    		btnClass:"btn btn-xs btn-default",
+    		key:"AIzaSyBAGm4WfH69Ny5DmWFAA88s26UwiNqHMn8",
+    		center: {lat: 17.6868, lng: 83.2185},
+    		success:function(data,address){
+    			//data contains address elements and
+    			//address conatins you searched text
+    			//Your logic here
+    			$("#pickup_country").val(data.formatted_address);
+    		}
+    	});
+    });
+</script>
+<style>
+.form-signin {
+    width: 100%;
+    max-width: 630px;
+    padding: 15px;
+    margin: 0 auto;
+}
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+  </body>
+</html>

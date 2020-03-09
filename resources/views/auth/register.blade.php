@@ -1,243 +1,113 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-<div class="card-body">
+    <link rel="stylesheet" href="{{ asset('landing/css/bootstrap.css') }}">
+    <style type="text/css">
+    .form-control {
+        min-height: 41px;
+		box-shadow: none;
+		border-color: #e1e4e5;
+	}
+    .form-control:focus {
+		border-color: #5fcaba;
+	}
+    .form-control, .btn {
+        border-radius: 3px;
+    }
+	.signup-form {
+		width: 400px;
+		margin: 0 auto;
+		padding: 30px 0;
+	}
+    .signup-form form {
+		color: #9ba5a8;
+		border-radius: 3px;
+    	margin-bottom: 15px;
+        background: #fff;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+	.signup-form h2 {
+		color: #333;
+		font-weight: bold;
+        margin-top: 0;
+    }
+    .signup-form hr {
+        margin: 0 -30px 20px;
+    }
+	.signup-form .form-group {
+		margin-bottom: 20px;
+	}
+    .signup-form label {
+		font-weight: normal;
+		font-size: 13px;
+	}
+</style>
+<div class="signup-form">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <form method="POST" action="{{ route('register') }}">
         @csrf
-
-        <div class="form-group row">
-            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-            <div class="col-md-6">
-                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                    value="{{ old('name') }}" required autocomplete="name" autofocus>
-
+        <h2>Sign Up</h2>
+        <p>It's free and only takes a minute.</p>
+        <hr>
+        <div class="form-group">
+            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Name"
+                required="required">
                 @error('name')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                 @enderror
-            </div>
         </div>
-
-        <div class="form-group row">
-            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-            <div class="col-md-6">
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-                    value="{{ old('email') }}" required autocomplete="email">
-
-                @error('email')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
+        <div class="form-group">
+            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email Address" required="required" value="{{ old('email') }}" autocomplete="email">
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
-
-        <div class="form-group row">
-            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-            <div class="col-md-6">
-                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                    name="password" required autocomplete="new-password">
-
-                @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
+        <div class="form-group">
+            <input type="password" class="form-control  @error('password') is-invalid @enderror" name="password" required="required" autocomplete="new-password" placeholder="Password" required="required">
         </div>
-
-        <div class="form-group row">
-            <label for="password-confirm"
-                class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-            <div class="col-md-6">
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
-                    autocomplete="new-password">
-            </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password"
+                required="required" autocomplete="new-password">
         </div>
-
-        <div class="form-group row mb-0">
-            <div class="col-md-6 offset-md-4">
-                <button type="submit" class="btn btn-primary">
-                    {{ __('Register') }}
-                </button>
-            </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block btn-lg">{{ __('Register') }}</button>
+        </div>
+        <div class="form-group">
+            <a href="{{ route('login.provider', 'twitter') }}"
+                                                class="btn btn-block btn-social btn-twitter text-center">
+                                                <span class="fa fa-twitter"></span> {{ __('Sign in with Twitter') }}
+                                            </a>
+        </div>
+        <div class="form-group">
+            <a href="{{ route('login.provider', 'facebook') }}"
+                                                class="btn btn-block btn-social btn-facebook text-center">
+                                                <span class="fa fa-facebook"></span>
+                                                {{ __('Sign in with Facebook') }}
+                                            </a>
+        </div>
+        <div class="form-group">
+            <a href="{{ route('login.provider', 'google') }}"
+                                                class="btn btn-block btn-social btn-google text-center">
+                                                <span class="fa fa-google"></span> {{ __('Sign in with Google') }}
+                                            </a>
         </div>
     </form>
+<div class="text-center">Already have an account? <a href="{{ url('login') }}">Login here</a></div>
 </div>
-</div>
-</div>
-</div>
-</div> --}}
-<div class="body-wrapper">
-    <div class="main-wrapper">
-        <div class="page-wrapper full-page-wrapper d-flex align-items-center justify-content-center">
-            <main class="auth-page">
-                <div class="mdc-layout-grid">
-                    <div class="mdc-layout-grid__inner">
-                        <div
-                            class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-1-tablet">
-                        </div>
-                        <div
-                            class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet">
-                            <div class="mdc-card">
-                                @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                @endif
-                                <form method="POST" action="{{ route('register') }}">
-                                    @csrf
-                                    <div class="mdc-layout-grid">
-                                        <div class="mdc-layout-grid__inner">
-                                            <div
-                                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-                                                <div class="mdc-text-field w-100">
-                                                    <input
-                                                        class="mdc-text-field__input @error('name') is-invalid @enderror"
-                                                        id="text-field-hero-input" name="name" value="{{ old('name') }}"
-                                                        required autocomplete="name" autofocus>
-                                                    <div class="mdc-line-ripple"></div>
-                                                    <label for="text-field-hero-input"
-                                                        class="mdc-floating-label">Name</label>
-                                                </div>
-                                                @error('name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                            </div>
-                                            <div
-                                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-                                                <div class="mdc-text-field w-100">
-                                                    <input
-                                                        class="mdc-text-field__input @error('email') is-invalid @enderror"
-                                                        id="text-field-hero-input" type="email" name="email"
-                                                        value="{{ old('email') }}" required autocomplete="email">
-                                                    <div class="mdc-line-ripple"></div>
-                                                    <label for="text-field-hero-input"
-                                                        class="mdc-floating-label">Email</label>
-                                                </div>
-                                                @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                            </div>
-                                            <div
-                                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                                                <div class="mdc-text-field w-100">
-                                                    <input
-                                                        class="mdc-text-field__input @error('password') is-invalid @enderror"
-                                                        name="password" required autocomplete="new-password"
-                                                        id="text-field-hero-input" type="password">
-                                                    <div class="mdc-line-ripple"></div>
-                                                    <label for="text-field-hero-input"
-                                                        class="mdc-floating-label">Password</label>
-                                                </div>
-                                                @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                            </div>
-                                            <div
-                                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                                                <div class="mdc-text-field w-100">
-                                                    <input class="mdc-text-field__input" type="password"
-                                                        id="text-field-hero-input" name="password_confirmation" required
-                                                        autocomplete="new-password">
-                                                    <div class="mdc-line-ripple"></div>
-                                                    <label for="text-field-hero-input"
-                                                        class="mdc-floating-label">Confirm Password</label>
-                                                </div>
-                                            </div>
-                                            {{-- <div
-                                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                                                <div class="mdc-form-field">
-                                                    <div class="mdc-checkbox">
-                                                        <input type="checkbox" class="mdc-checkbox__native-control"
-                                                            id="checkbox-1" />
-                                                        <div class="mdc-checkbox__background">
-                                                            <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                                                                <path class="mdc-checkbox__checkmark-path" fill="none"
-                                                                    d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                                                            </svg>
-                                                            <div class="mdc-checkbox__mixedmark"></div>
-                                                        </div>
-                                                    </div>
-                                                    <label for="checkbox-1">Remember me</label>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop d-flex align-items-center justify-content-end">
-                                                <a href="#">Forgot Password</a>
-                                            </div> --}}
-                                            <div
-                                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                                                <button type="submit" class="mdc-button mdc-button--raised w-100">
-                                                    {{ __('Register') }}
-                                                </button>
-                                            </div>
-                                            <div
-                                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                                                <a href="{{ route('login.provider', 'twitter') }}"
-                                                    class="btn btn-block btn-social btn-twitter text-center">
-                                                    <span class="fa fa-twitter"></span> {{ __('Sign in with Twitter') }}
-                                                </a>
-                                            </div>
-                                            <div
-                                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                                                <a href="{{ route('login.provider', 'facebook') }}"
-                                                    class="btn btn-block btn-social btn-facebook text-center">
-                                                    <span class="fa fa-facebook"></span>
-                                                    {{ __('Sign in with Facebook') }}
-                                                </a>
-                                            </div>
-                                            <div
-                                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                                                <a href="{{ route('login.provider', 'google') }}"
-                                                    class="btn btn-block btn-social btn-google text-center">
-                                                    <span class="fa fa-google"></span> {{ __('Sign in with Google') }}
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div
-                            class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-1-tablet">
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div>
-    </div>
-</div>
-<!-- plugins:js -->
-<script src=" {{ asset('vendors/js/vendor.bundle.base.js') }} "></script>
-<!-- endinject -->
-<!-- Plugin js for this page-->
-<!-- End plugin js for this page-->
-<!-- inject:js -->
-<script src=" {{ asset('js/material.js') }}"></script>
-<script src="{{ asset('js/misc.js') }}"></script>
-<!-- endinject -->
-<!-- Custom js for this page-->
-<!-- End custom js for this page-->
+
+
 @endsection

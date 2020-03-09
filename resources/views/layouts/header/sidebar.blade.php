@@ -1,139 +1,60 @@
-<aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open">
-    <div class="mdc-drawer__header">
-        <a href="{{ url('/') }}" class="brand-logo">
-            <img src="{{ asset('images/logo.svg') }}" alt="logo">
-        </a>
+<!--**********************************
+            Sidebar start
+        ***********************************-->
+<div class="nk-sidebar">
+    <div class="nk-nav-scroll">
+        <ul class="metismenu" id="menu">
+            <li class="nav-label">Dashboard</li>
+            <li>
+                <a class="" href="{{ url('dashboard') }}" aria-expanded="false">
+                    <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="mega-menu mega-menu-sm">
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Profile</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{{ url('profile/change-avatar') }}">Change Avatar</a></li>
+                    <li><a href="{{ url('profile/account-details') }}">Account Details</a></li>
+                    <li><a href="{{ url('profile/view-profile') }}">View Profile</a></li>
+                    <li><a href="{{ url('profile/edit-profile') }}">Edit Profile</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class="icon-envelope menu-icon"></i> <span class="nav-text">Cars</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{{ url('cars/add-new-car') }}">Add New Car</a></li>
+                    <li><a href="{{ url('cars/view-cars') }}">View Cars</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Rides</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Add New Ride</a></li>
+                    <ul aria-expanded="false">
+                        <li><a href="{{ url('rides/add-new-ride') }}">Drive</a> </li>
+                        <li><a href="{{ url('rides/join-new-ride') }}">Join a Ride</a></li>
+                    </ul>
+                    <li><a href="{{ url('rides/view-rides') }}">View Rides</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class="icon-graph menu-icon"></i> <span class="nav-text">Payments</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{{ url('payments/make-payment') }}">Make Payment</a></li>
+                    <li><a href="{{ url('payments/view-payments') }}">View Payment</a></li>
+                </ul>
+            </li>
+        </ul>
     </div>
-    <div class="mdc-drawer__content">
-        <div class="user-info">
-            <p class="name">{{ Auth::user()->name }}</p>
-            <p class="email">{{ Auth::user()->email }}</p>
-        </div>
-        <div class="mdc-list-group">
-            <nav class="mdc-list mdc-drawer-menu">
-                <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="{{ url('/dashboard') }}">
-                        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon"
-                            aria-hidden="true">home</i>
-                        Dashboard
-                    </a>
-                </div>
-                <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="#" data-toggle="expansionPanel" data-target="profile-submenu">
-                        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon"
-                            aria-hidden="true">person_outline</i>
-                        Profile
-                        <i class="mdc-drawer-arrow material-icons">chevron_right</i>
-                    </a>
-                    <div class="mdc-expansion-panel" id="profile-submenu">
-                        <nav class="mdc-list mdc-drawer-submenu">
-                            <div class="mdc-list-item mdc-drawer-item">
-                                <a class="mdc-drawer-link" href="{{ url('profile/change-avatar') }}">
-                                    Change avatar
-                                </a>
-                            </div>
-                            <div class="mdc-list-item mdc-drawer-item">
-                                <a class="mdc-drawer-link" href="{{ url('profile/view-profile') }}">
-                                    View profile
-                                </a>
-                            </div>
-                            <div class="mdc-list-item mdc-drawer-item">
-                                <a class="mdc-drawer-link" href="{{ url('profile/edit-profile') }}">
-                                    Edit profile
-                                </a>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-                <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="#" data-toggle="expansionPanel" data-target="car-submenu">
-                        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon"
-                            aria-hidden="true">directions_car</i>
-                        Cars
-                        <i class="mdc-drawer-arrow material-icons">chevron_right</i>
-                    </a>
-                    <div class="mdc-expansion-panel" id="car-submenu">
-                        <nav class="mdc-list mdc-drawer-submenu">
-                            <div class="mdc-list-item mdc-drawer-item">
-                                <a class="mdc-drawer-link" href="{{ url('cars/add-new-car') }}">
-                                    Add New Car
-                                </a>
-                            </div>
-                            <div class="mdc-list-item mdc-drawer-item">
-                                <a class="mdc-drawer-link" href="{{ url('cars/view-cars') }}">
-                                    View Cars
-                                </a>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-                <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="#" data-toggle="expansionPanel" data-target="ride-submenu">
-                        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon"
-                            aria-hidden="true">local_taxi</i>
-                        Rides
-                        <i class="mdc-drawer-arrow material-icons">chevron_right</i>
-                    </a>
-                    <div class="mdc-expansion-panel" id="ride-submenu">
-                        <nav class="mdc-list mdc-drawer-submenu">
-                            <div class="mdc-list-item mdc-drawer-item">
-                                <a class="mdc-drawer-link" href="#" data-toggle="expansionPanel"
-                                    data-target="ride-sub-submenu">
-                                    Add New Ride
-                                </a>
-                            </div>
-                            <div class="mdc-list-item mdc-drawer-item">
-                                <a class="mdc-drawer-link" href="{{ url('') }}">
-                                    My Rides
-                                </a>
-                            </div>
-                        </nav>
-                    </div>
-                    <div class="mdc-expansion-panel" id="ride-sub-submenu">
-                        <nav class="mdc-list mdc-drawer-submenu">
-                            <div class="mdc-list-item mdc-drawer-item">
-                                <a class="mdc-drawer-link" href="{{ url('rides/add-new-ride') }}">
-                                    Drive
-                                </a>
-                            </div>
-                            <div class="mdc-list-item mdc-drawer-item">
-                                <a class="mdc-drawer-link" href="{{ url('') }}">
-                                    Join a Ride
-                                </a>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-                <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel"
-                        data-target="sample-page-submenu">
-                        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon"
-                            aria-hidden="true">euro_symbol</i>
-                        Payments
-                        <i class="mdc-drawer-arrow material-icons">chevron_right</i>
-                    </a>
-                    <div class="mdc-expansion-panel" id="sample-page-submenu">
-                        <nav class="mdc-list mdc-drawer-submenu">
-                            <div class="mdc-list-item mdc-drawer-item">
-                                <a class="mdc-drawer-link" href="pages/samples/blank-page.html">
-                                    Blank Page
-                                </a>
-                            </div>
-                            <div class="mdc-list-item mdc-drawer-item">
-                                <a class="mdc-drawer-link" href="pages/samples/403.html">
-                                    403
-                                </a>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <div class="profile-actions">
-            <a href="javascript:;">Settings</a>
-            <span class="divider"></span>
-            <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Logout</a>
-        </div>
-    </div>
-</aside>
+</div>
+<!--**********************************
+            Sidebar end
+        ***********************************-->

@@ -129,7 +129,7 @@ class CarController extends Controller
     {
         $user_id = Auth::user()->id;
         $cars = Car::where('user_id', $user_id)->get();
-        return view('cars\view-cars', ["cars" => $cars]);
+        return view('cars.view-cars', ["cars" => $cars]);
     }
 
     /**
@@ -138,8 +138,9 @@ class CarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
+        $id = $request->id;
         $car_makes = DB::table('cars_list')->select('make')->distinct()->orderBy('make')->get()->toArray();
         $countries = DB::table('country_codes')->select('nicename')->get();
         $car_details = Car::find($id);
