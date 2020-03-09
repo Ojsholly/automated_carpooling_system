@@ -216,9 +216,9 @@
                 }
             });
             $('.datetime').datetimepicker({
-                value: "{{ date('Y-m-d H:i:s') }}",
+                value: "{{ date('Y-m-d H:i') }}",
                 minDate: "{{ date('Y-m-d') }}",
-                minTime: "{{ date(H:i:) }}"
+                minTime: "{{ date('H:i') }}"
             });
         });
     </script>
