@@ -1,5 +1,4 @@
 <?php $__env->startSection('content'); ?>
-
 <div class="body-wrapper">
     <div class="main-wrapper">
         <div class="page-wrapper full-page-wrapper d-flex align-items-center justify-content-center">
@@ -167,5 +166,4 @@ unset($__errorArgs, $__bag); ?>
 <script src="<?php echo e(asset('js/material.js')); ?>"></script>
 <script src="<?php echo e(asset('js/misc.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\laravel\automated_carpooling_system\resources\views/auth/login.blade.php ENDPATH**/ ?>

@@ -1,71 +1,93 @@
 @extends('layouts.layout')
 
 @section('content')
+<!--**********************************
+            Content body start
+        ***********************************-->
+<div class="content-body">
 
-<main class="content-wrapper">
-    <div class="mdc-layout-grid">
-        <div class="mdc-layout-grid__inner">
-            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                <div class="mdc-card">
-                    <h6 class="card-title mb-2">Your Profile</h6>
-                    <div class="template-demo typography-demo">
-                        <div class="mdc-layout-grid__inner align-items-center">
-                            <div
-                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-1 text-muted tx-14">
-                                Name
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p>Name</p>
+                                <p class="font-weight-bold">{{ Auth::user()->name }}</p>
                             </div>
-                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-5">
-                                <h1 class="mdc-typography--headline1">{{ Auth::user()->name }}</h1>
+                            <div class="col-md-3">
+                                <p>Gender</p>
+                                <p class="font-weight-bold">{{ Auth::user()->gender }}</p>
                             </div>
-                            <div
-                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-1 text-muted tx-14">
-                                Gender
+                            <div class="col-md-3">
+                                <p>Date of Birth</p>
+                                <p class="font-weight-bold">{{ Auth::user()->dob }}</p>
                             </div>
-                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
-                                <h1 class="mdc-typography--headline3">{{ Auth::user()->gender }}</h1>
-                            </div>
-                            <div
-                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-1 text-muted tx-14">
-                                Age
-                            </div>
-                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
-                                <h1 class="mdc-typography--headline3">{{ $age." years" }}</h1>
-                            </div>
-                            <div
-                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-1 text-muted tx-14">
-                                Email
-                            </div>
-                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
-                                <h1 class="mdc-typography--headline3">{{ Auth::user()->email }}</h1>
-                            </div>
-                            <div
-                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-1 text-muted tx-14">
-                                Phone
-                            </div>
-                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
-                                <h1 class="mdc-typography--headline3">
-                                    {{ Auth::user()->country_code." ".Auth::user()->phone }}</h1>
-                            </div>
-                            <div
-                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-1 text-muted tx-14">
-                                Date of Birth
-                            </div>
-                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
-                                <h1 class="mdc-typography--headline3">{{ Auth::user()->dob }}</h1>
-                            </div>
-                            <div
-                                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4 text-muted tx-14">
-                                Profile Introduction
-                            </div>
-                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8">
-                                <h1 class="mdc-typography--headline3">{{ Auth::user()->intro }}</h1>
+                            <div class="col-md-3">
+                                <p>Age</p>
+                                <p class="font-weight-bold">{{ $age." years" }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Ripple Enabled Buttons Ends -->
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p>Phone Number</p>
+                                <p class="font-weight-bold">{{ Auth::user()->country_code." ".Auth::user()->phone }}</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p>Email</p>
+                                <p class="font-weight-bold">{{ Auth::user()->email }}</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p>Bank</p>
+                                <p class="font-weight-bold"></p>
+                            </div>
+                            <div class="col-md-3">
+                                <p>Account Number</p>
+                                <p class="font-weight-bold"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Brief Introduction</p>
+                                <p class="font-weight-bold">{{ Auth::user()->intro }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="text-center">
+                                    <a class="btn btn-primary btn-md" href="{{ url('profile/edit-profile') }}">Edit
+                                        Profile</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!-- #/ container -->
     </div>
-</main>
+
+</div>
+<!--**********************************
+            Content body end
+        ***********************************-->
 @endsection

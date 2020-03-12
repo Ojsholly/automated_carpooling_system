@@ -77,13 +77,28 @@
                     <div class="mdc-expansion-panel" id="ride-submenu">
                         <nav class="mdc-list mdc-drawer-submenu">
                             <div class="mdc-list-item mdc-drawer-item">
-                                <a class="mdc-drawer-link" href="<?php echo e(url('rides/new-ride')); ?>">
-                                    New Ride
+                                <a class="mdc-drawer-link" href="#" data-toggle="expansionPanel"
+                                    data-target="ride-sub-submenu">
+                                    Add New Ride
                                 </a>
                             </div>
                             <div class="mdc-list-item mdc-drawer-item">
                                 <a class="mdc-drawer-link" href="<?php echo e(url('')); ?>">
                                     My Rides
+                                </a>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="mdc-expansion-panel" id="ride-sub-submenu">
+                        <nav class="mdc-list mdc-drawer-submenu">
+                            <div class="mdc-list-item mdc-drawer-item">
+                                <a class="mdc-drawer-link" href="<?php echo e(url('rides/add-new-ride')); ?>">
+                                    Drive
+                                </a>
+                            </div>
+                            <div class="mdc-list-item mdc-drawer-item">
+                                <a class="mdc-drawer-link" href="<?php echo e(url('')); ?>">
+                                    Join a Ride
                                 </a>
                             </div>
                         </nav>
@@ -121,5 +136,4 @@
                                                      document.getElementById('logout-form').submit();">Logout</a>
         </div>
     </div>
-</aside>
-<?php /**PATH C:\xampp\htdocs\laravel\automated_carpooling_system\resources\views/layouts/header/sidebar.blade.php ENDPATH**/ ?>
+</aside><?php /**PATH C:\xampp\htdocs\laravel\automated_carpooling_system\resources\views/layouts/header/sidebar.blade.php ENDPATH**/ ?>
