@@ -38,7 +38,7 @@
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Add New Ride</a></li>
                     <ul aria-expanded="false">
                         <li><a href="{{ url('rides/add-new-ride') }}">Drive</a> </li>
-                        <li><a href="{{ url('rides/join-new-ride') }}">Join a Ride</a></li>
+                        <li><a href="{{ url('rides/find-new-ride') }}">FInd a Ride</a></li>
                     </ul>
                     <li><a href="{{ url('rides/view-rides') }}">View Rides</a></li>
                 </ul>

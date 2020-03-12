@@ -34,6 +34,16 @@
             height: 45px;
         }
 
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
     </style>
 
 </head>
@@ -198,8 +208,8 @@
                 id: $(this).attr('id'),
                 title: "Enter or select an address from the map.",
                 btnClass: "btn btn-primary btn-lg",
-                center: {lat: -34.397, lng: 150.644},
-                zoom: 10,
+                center: {lat: 9.082, lng: 8.6753},
+                zoom: 8,
                 success:function(data,address){
                     $('#pickup_location').val(data.formatted_address);
                 }
@@ -209,8 +219,8 @@
                 id: $(this).attr('id'),
                 title: "Enter or select an address from the map.",
                 btnClass: "btn btn-primary btn-lg",
-                center: {lat: -34.397, lng: 150.644},
-                zoom: 10,
+                center: {lat: 9.082, lng: 8.6753},
+                zoom: 8,
                 success:function(data,address){
                     $('#destination').val(data.formatted_address);
                 }
@@ -218,7 +228,8 @@
             $('.datetime').datetimepicker({
                 value: "{{ date('Y-m-d H:i') }}",
                 minDate: "{{ date('Y-m-d') }}",
-                minTime: "{{ date('H:i') }}"
+                minTime: "{{ date('H:i') }}",
+                step:"30"
             });
         });
     </script>

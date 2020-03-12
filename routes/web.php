@@ -62,4 +62,7 @@ Route::group(['prefix' => 'rides', 'namespace' => 'Ride'], function () {
 
     Route::get('/add-new-ride', 'RideController@create')->middleware('auth');
     Route::post('/add-new-ride', 'RideController@store')->name('rides/add-new-ride')->middleware('auth');
+
+    Route::get('/find-new-ride', 'RideController@show')->middleware('auth');
+    Route::post('/find-new-ride', 'RideController@index')->name('rides/find-new-ride')->middleware('auth');
 });
