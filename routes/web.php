@@ -21,6 +21,10 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth')->m
 
 Route::get('/dashboard', 'HomeController@index')->name('home')->middleware('auth')->middleware('verified');
 
+Route::get('/get-car-models', 'MiscController@get_car_models');
+
+Route::get('/get-model-year', 'MiscController@get_model_years');
+
 Route::get('redirect/{driver}', 'Auth\LoginController@redirectToProvider')
     ->name('login.provider')
     ->where('driver', implode('|', config('auth.socialite.drivers')));
@@ -38,4 +42,27 @@ Route::group(['prefix' => 'profile', 'namespace' => 'Profile'], function () {
 
     Route::get('/change-avatar', 'ProfileController@create')->middleware('auth');
     Route::post('/change-avatar', 'ProfileController@store')->name('profile/change-avatar')->middleware('auth');
+});
+
+Route::group(['prefix' => 'cars', 'namespace' => 'Car'], function () {
+
+    Route::get('/add-new-car', 'CarController@create')->middleware('auth');
+    Route::post('/add-new-car', 'CarController@store')->name('cars/add-new-car')->middleware('auth');
+
+    Route::get('/view-cars', 'CarController@show')->middleware('auth');
+
+    Route::get('/view-car/{id}', 'CarController@index')->middleware('auth');
+
+    Route::get('/edit-car/{id}', 'CarController@edit')->middleware('auth')->name('cars/edit-car');
+
+    Route::post('/delete-car', 'CarController@destroy')->name('cars/delete-car')->middleware('auth');
+});
+
+Route::group(['prefix' => 'rides', 'namespace' => 'Ride'], function () {
+
+    Route::get('/add-new-ride', 'RideController@create')->middleware('auth');
+    Route::post('/add-new-ride', 'RideController@store')->name('rides/add-new-ride')->middleware('auth');
+
+    Route::get('/find-new-ride', 'RideController@show')->middleware('auth');
+    Route::post('/find-new-ride', 'RideController@index')->name('rides/find-new-ride')->middleware('auth');
 });

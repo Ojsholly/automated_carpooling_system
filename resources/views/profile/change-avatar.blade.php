@@ -1,8 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-
-<main class="content-wrapper">
+<div class="content-body">
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -15,38 +14,34 @@
 
     <form method="post" action="{{ route('profile/change-avatar') }}" enctype="multipart/form-data">
         @csrf
-        <div class="mdc-layout-grid">
-            <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell--span-12">
-                    <div class="mdc-card">
-                        <h6 class="card-title">Upload Profile Avatar</h6>
-                        <div class="template-demo">
-                            <div class="mdc-layout-grid__inner">
-                                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-                                    <input class="mdc-text-field__input avatar" id="text-field-hero-input" required
-                                        name="avatar" type="file">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Upload Profile Avatar</h4>
+                            <div class="basic-form">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <input name="avatar" type="file" id="avatar" required
+                                            class="form-control avatar">
+                                    </div>
                                 </div>
                             </div>
-                            <p class="font-weight-bold text-small text-center">Kindly limit the size of uploads to 2MB
-                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="mdc-layout-grid">
-            <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell--span-12">
-                    <div class="mdc-card">
-                        <div class="template-demo text-center">
-                            <button type="submit" class="mdc-button mdc-button--raised mdc-button--dense">
-                                Submit
-                            </button>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="general-button text-center">
+                                <button type="submit" class="btn mb-1 btn-primary">Save Avatar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </form>
-</main>
+</div>
 @endsection
